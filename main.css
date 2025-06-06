@@ -1,0 +1,284 @@
+/* styles.css */
+:root {
+  --primary: #4361ee;
+  --primary-light: #4895ef;
+  --danger: #f72585;
+  --done: #2ecc71;
+  --warning: #0a58ca;
+  --dark: #212529;
+  --light: #f8f9fa;
+  --gray: #6c757d;
+  --border-radius: 8px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  background-color: #f5f7fa;
+  color: var(--dark);
+  padding: 20px;
+}
+
+.todo-app {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.header-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.header-desc {
+  color: var(--gray);
+  font-size: 1rem;
+}
+
+.counter {
+  font-weight: 600;
+}
+
+.counter.active {
+  color: var(--warning);
+}
+
+.counter.done {
+  color: var(--done);
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  list-style: none;
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid var(--light);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.todo-item.empty {
+  justify-content: center;
+  color: var(--gray);
+  font-style: italic;
+}
+
+.todo-item-text {
+  flex-grow: 1;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.todo-item.important .todo-item-text {
+  font-weight: 700;
+  color: var(--warning);
+}
+
+.todo-item.done .todo-item-text {
+  text-decoration: line-through;
+  color: var(--gray);
+}
+
+.btn-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-group .btn {
+  border-radius: 0 !important; /* Убираем радиусы у группы кнопок */
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%; /* Оставляем круглые кнопки */
+  background-color: var(--light);
+  color: var(--dark);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.btn-important {
+  color: var(--warning);
+}
+
+.btn-important.active {
+  background-color: var(--warning);
+  color: white;
+}
+
+/* Кнопка "Выполнено" - зеленая */
+.btn-done {
+  color: var(--done); /* Ярко-зеленый цвет */
+  background-color: rgba(46, 204, 113, 0.1); /* Светло-зеленый фон */
+}
+
+.btn-done.active {
+  background-color: var(--done); /* Зеленый фон для активной */
+  color: white;
+}
+
+.btn-done:hover {
+  background-color: rgba(
+    46,
+    204,
+    113,
+    0.2
+  ); /* Полупрозрачный зеленый при наведении */
+}
+
+/* Кнопка "Удалить" - красная */
+.btn-delete {
+  color: #e74c3c; /* Ярко-красный цвет */
+  background-color: rgba(231, 76, 60, 0.1); /* Светло-красный фон */
+}
+
+.btn-delete:hover {
+  background-color: #e74c3c; /* Красный фон при наведении */
+  color: white;
+}
+
+.footer {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.task-input {
+  flex-grow: 1;
+  padding: 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.task-input:focus {
+  outline: none;
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+.btn-add {
+  padding: 1rem 1.5rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-add:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.btn-add:disabled {
+  background-color: var(--gray);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .todo-app {
+    padding: 1.5rem;
+  }
+
+  .header-title {
+    font-size: 1.75rem;
+  }
+
+  .btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+
+  .btn-add {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .todo-app {
+    padding: 1rem;
+  }
+
+  .header-title {
+    font-size: 1.5rem;
+  }
+
+  .todo-item {
+    padding: 0.75rem;
+  }
+
+  .btn-group {
+    gap: 0.25rem;
+  }
+
+  .btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+}
