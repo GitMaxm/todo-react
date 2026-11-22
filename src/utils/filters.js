@@ -2,7 +2,9 @@ export function search(items, term) {
   const normalizedTerm = term.toLowerCase().trim();
   return normalizedTerm.length === 0
     ? items
-    : items.filter((item) => item.title.toLowerCase().includes(normalizedTerm));
+    : items.filter((item) =>
+        item.title.toLowerCase().includes(normalizedTerm),
+      );
 }
 
 export function filterStatus(items, status) {

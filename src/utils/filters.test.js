@@ -29,17 +29,25 @@ describe('search', () => {
 
 describe('filterStatus', () => {
   it('active возвращает только невыполненные', () => {
-    expect(filterStatus(items, 'active').every((item) => !item.done)).toBe(true);
+    expect(
+      filterStatus(items, 'active').every((item) => !item.done),
+    ).toBe(true);
     expect(filterStatus(items, 'active')).toHaveLength(2);
   });
 
   it('important возвращает только важные', () => {
-    expect(filterStatus(items, 'important').every((item) => item.important)).toBe(true);
+    expect(
+      filterStatus(items, 'important').every(
+        (item) => item.important,
+      ),
+    ).toBe(true);
     expect(filterStatus(items, 'important')).toHaveLength(2);
   });
 
   it('done возвращает только выполненные', () => {
-    expect(filterStatus(items, 'done').every((item) => item.done)).toBe(true);
+    expect(
+      filterStatus(items, 'done').every((item) => item.done),
+    ).toBe(true);
     expect(filterStatus(items, 'done')).toHaveLength(1);
   });
 
