@@ -4,6 +4,7 @@ import Search from './Search';
 import StatusBar from "./StatusBar";
 import List from './List';
 import Footer from './Footer';
+import { filterStatus, search } from '../utils/filters';
 
 const App = () => {
 	const [todoData, setTodoData] = useState([
@@ -14,7 +15,6 @@ const App = () => {
 		{ id: 5, title: 'Позвонить маме', important: true, done: true },
 		{ id: 6, title: 'Записаться на курс по React и Redux, чтобы изучить все хуки и лучшие практики', important: true, done: false },
 		{ id: 7, title: 'Разобраться с API (JSON, REST)', important: false, done: false },
-
 	]);
 	const [term, setTerm] = useState('');
 	const [status, setStatus] = useState('all');
@@ -46,22 +46,6 @@ const App = () => {
 		});
 	};
 
-	const search = (items, term) => {
-		const normalizedTerm = term.toLowerCase().trim();
-		return normalizedTerm.length === 0
-			? items
-			: items.filter(item => item.title.toLowerCase().includes(normalizedTerm));
-	};
-
-	const filterStatus = (items, status) => {
-		switch (status) {
-			case 'active': return items.filter(item => !item.done);
-			case 'important': return items.filter(item => item.important);
-			case 'done': return items.filter(item => item.done);
-			default: return items;
-		}
-	};
-
 	const statusCounterActive = useMemo(() =>
 		todoData.reduce((counter, item) => item.done ? counter : counter + 1, 0),
 		[todoData]
@@ -71,9 +55,6 @@ const App = () => {
 		todoData.reduce((counter, item) => item.done ? counter + 1 : counter, 0),
 		[todoData]
 	);
-
-	// const filteredBySearchItems = search(todoData, term);
-	// const filteredByStatusItems = filterStatus(filteredBySearchItems, status);
 
 	const filteredItems = useMemo(() => {
 		const searchedItems = search(todoData, term);

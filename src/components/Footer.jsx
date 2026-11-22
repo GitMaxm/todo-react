@@ -1,44 +1,35 @@
-// Footer.jsx
-import { Component } from "react";
+import { useState } from 'react';
 
-class Footer extends Component {
-	state = {
-		taskTitle: ''
-	}
+function Footer({ addItem }) {
+	const [taskTitle, setTaskTitle] = useState('');
 
-	onInputChange = (e) => {
-		this.setState({
-			taskTitle: e.target.value
-		})
-	}
+	const onInputChange = (event) => {
+		setTaskTitle(event.target.value);
+	};
 
-	onSubmit = (e) => {
-		e.preventDefault();
-		if (this.state.taskTitle.trim()) {
-			this.props.addItem(this.state.taskTitle);
+	const onSubmit = (event) => {
+		event.preventDefault();
+		if (taskTitle.trim()) {
+			addItem(taskTitle);
 		}
-		this.setState({
-			taskTitle: ''
-		})
-	}
+		setTaskTitle('');
+	};
 
-	render() {
-		return (
-			<form onSubmit={this.onSubmit} className="footer">
-				<input
-					value={this.state.taskTitle}
-					onChange={this.onInputChange}
-					type="text"
-					placeholder="Что необходимо сделать"
-					className="task-input"
-					aria-label="Новая задача"
-				/>
-				<button type="submit" className="btn-add" disabled={!this.state.taskTitle.trim()}>
-					<i className="bi bi-plus-lg"></i> Добавить
-				</button>
-			</form>
-		);
-	}
+	return (
+		<form onSubmit={onSubmit} className="footer">
+			<input
+				value={taskTitle}
+				onChange={onInputChange}
+				type="text"
+				placeholder="Что необходимо сделать"
+				className="task-input"
+				aria-label="Новая задача"
+			/>
+			<button type="submit" className="btn-add" disabled={!taskTitle.trim()}>
+				<i className="bi bi-plus-lg"></i> Добавить
+			</button>
+		</form>
+	);
 }
 
 export default Footer;

@@ -1,13 +1,12 @@
-
-function Search(props) {
-
+function Search({ changeTerm, term }) {
 	return (
 		<input
-			onChange={(e) =>
-				props.changeTerm(e.target.value)} term={props.term}
+			value={term}
+			onChange={(e) => changeTerm(e.target.value)}
 			type="text"
 			placeholder="введите фразу для поиска"
-			className="form-control me-2" />
+			className="form-control me-2"
+		/>
 	);
 }
 
