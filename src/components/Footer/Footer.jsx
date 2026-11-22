@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './Footer.module.css';
 
 function Footer({ addItem }) {
 	const [taskTitle, setTaskTitle] = useState('');
@@ -16,17 +17,20 @@ function Footer({ addItem }) {
 	};
 
 	return (
-		<form onSubmit={onSubmit} className="footer">
+		<form onSubmit={onSubmit} className={styles.form}>
 			<input
 				value={taskTitle}
 				onChange={onInputChange}
 				type="text"
 				placeholder="Что необходимо сделать"
-				className="task-input"
+				className={styles.input}
 				aria-label="Новая задача"
 			/>
-			<button type="submit" className="btn-add" disabled={!taskTitle.trim()}>
-				<i className="bi bi-plus-lg"></i> Добавить
+			<button type="submit" className={styles.addButton} disabled={!taskTitle.trim()}>
+				<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+					<path d="M8 2.5v11M2.5 8h11" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+				</svg>
+				Добавить
 			</button>
 		</form>
 	);

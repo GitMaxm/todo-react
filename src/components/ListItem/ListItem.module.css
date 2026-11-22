@@ -1,0 +1,134 @@
+.item {
+  --item-padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--item-padding);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background-color: color-mix(in srgb, var(--gray) 10%, white);
+}
+
+.text {
+  flex-grow: 1;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  margin: calc(-1 * var(--item-padding)) 0 calc(-1 * var(--item-padding)) calc(-1 * var(--item-padding));
+  padding: var(--item-padding) 0.5rem var(--item-padding) var(--item-padding);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.text:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: -2px;
+}
+
+.itemImportant .text {
+  font-weight: 700;
+  color: var(--warning);
+}
+
+.itemDone .text {
+  text-decoration: line-through;
+  color: var(--gray);
+}
+
+.group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--light);
+  color: var(--dark);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+
+.button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.important {
+  color: var(--warning);
+  background-color: color-mix(in srgb, var(--warning) 10%, white);
+}
+
+.important:hover {
+  background-color: var(--border);
+  color: var(--dark);
+}
+
+.importantActive {
+  background-color: var(--warning);
+  color: white;
+}
+
+.doneBtn {
+  color: var(--done);
+  background-color: color-mix(in srgb, var(--done) 12%, transparent);
+}
+
+.doneBtnActive {
+  background-color: var(--done);
+  color: white;
+}
+
+.doneBtn:hover {
+  background-color: color-mix(in srgb, var(--done) 22%, transparent);
+}
+
+.deleteBtn {
+  color: var(--danger);
+  background-color: color-mix(in srgb, var(--danger) 12%, transparent);
+}
+
+.deleteBtn:hover {
+  background-color: var(--danger);
+  color: white;
+}
+
+.empty {
+  justify-content: center;
+  color: var(--gray);
+  font-style: italic;
+}
+
+.empty .text {
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .item {
+    --item-padding: 0.75rem;
+  }
+
+  .button {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+}

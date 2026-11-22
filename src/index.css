@@ -1,0 +1,35 @@
+:root {
+  --primary: #4361ee;
+  --primary-light: #4895ef;
+  --danger: #e74c3c;
+  --done: #2ecc71;
+  --warning: #0a58ca;
+  --dark: #212529;
+  --light: #f8f9fa;
+  --gray: #6c757d;
+  --border: #e9ecef;
+  --border-radius: 8px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  background-color: #f5f7fa;
+  color: var(--dark);
+  padding: 20px;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+}

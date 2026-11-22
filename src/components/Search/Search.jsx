@@ -1,11 +1,13 @@
+import styles from './Search.module.css';
+
 function Search({ changeTerm, term }) {
 	return (
 		<input
+			className={styles.input}
 			value={term}
-			onChange={(e) => changeTerm(e.target.value)}
+			onChange={(event) => changeTerm(event.target.value)}
 			type="text"
 			placeholder="введите фразу для поиска"
-			className="form-control me-2"
 		/>
 	);
 }

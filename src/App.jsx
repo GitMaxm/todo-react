@@ -1,10 +1,11 @@
 import { useState, useMemo } from 'react';
-import Header from './Header';
-import Search from './Search';
-import StatusBar from "./StatusBar";
-import List from './List';
-import Footer from './Footer';
-import { filterStatus, search } from '../utils/filters';
+import Header from './components/Header/Header';
+import Search from './components/Search/Search';
+import StatusBar from './components/StatusBar/StatusBar';
+import List from './components/List/List';
+import Footer from './components/Footer/Footer';
+import { filterStatus, search } from './utils/filters';
+import styles from './App.module.css';
 
 const App = () => {
 	const [todoData, setTodoData] = useState([
@@ -62,13 +63,13 @@ const App = () => {
 	}, [todoData, term, status]);
 
 	return (
-		<div>
+		<div className={styles.app}>
 			<Header
 				statusCounterActive={statusCounterActive}
 				statusCounterDone={statusCounterDone}
 			/>
 
-			<div className="search mb-2">
+			<div className={styles.controls}>
 				<Search changeTerm={setTerm} term={term} />
 				<StatusBar changeStatus={setStatus} status={status} />
 			</div>

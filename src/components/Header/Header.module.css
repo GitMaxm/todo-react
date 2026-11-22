@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.title {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.desc {
+  color: var(--gray);
+  font-size: 1rem;
+}
+
+.counter {
+  font-weight: 600;
+}
+
+.active {
+  color: var(--warning);
+}
+
+.done {
+  color: var(--done);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+}
